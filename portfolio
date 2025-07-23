@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My portfolio</title>
+</head>
+<body>
+  <h2>my portfolio</h2>
+  <input type="file" id="folderInput" webkitdirectory multiple />
+  <ul id="fileList"></ul>
+
+  <script>
+    document.getElementById('folderInput').addEventListener('change', function(e) {
+      const files = e.target.files;
+      const fileList = document.getElementById('fileList');
+      fileList.innerHTML = '';
+      for (const file of files) {
+        const li = document.createElement('li');
+        li.textContent = file.webkitRelativePath || file.name;
+        fileList.appendChild(li);
+      }
+    });
+  </script>
+</body>
+</html>
